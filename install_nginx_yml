@@ -1,0 +1,16 @@
+---
+# 파일명: install_nginx.yml
+- name: Install and start Nginx
+  hosts: local
+  become: yes
+  tasks: 
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Ensure nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes
